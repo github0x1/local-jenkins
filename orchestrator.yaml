@@ -6,7 +6,7 @@ spec:
   ports:
   - port: 8080
     name: webui
-  - port: 5000
+  - port: 50000
     name: jnlp
   selector:
     app: jenkins
@@ -42,7 +42,7 @@ spec:
       - image: jenkins:latest
         name: jenkins-orchestrator
         ports:
-        - containerPort: 5000
+        - containerPort: 50000
           name: jnlp
         - containerPort: 8080
           name: webui
