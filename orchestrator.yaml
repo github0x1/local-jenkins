@@ -5,6 +5,9 @@ metadata:
 spec:
   ports:
   - port: 8080
+    name: webui
+  - port: 5000
+    name: jnlp
   selector:
     app: jenkins
   type: NodePort
@@ -39,6 +42,8 @@ spec:
       - image: jenkins:latest
         name: jenkins-orchestrator
         ports:
+        - containerPort: 5000
+          name: jnlp
         - containerPort: 8080
           name: webui
         volumeMounts:
