@@ -7,7 +7,7 @@ spec:
   - port: 8080
     name: webui
   - port: 50000
-    name: jnlp
+    name: agent-request
   selector:
     app: jenkins
   type: NodePort
@@ -43,7 +43,7 @@ spec:
         name: jenkins-orchestrator
         ports:
         - containerPort: 50000
-          name: jnlp
+          name: agent-request
         - containerPort: 8080
           name: webui
         volumeMounts:
