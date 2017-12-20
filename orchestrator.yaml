@@ -15,10 +15,10 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jenkins-root-claim
+  name: jenkins-home-claim
 spec:
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
@@ -38,6 +38,8 @@ spec:
       labels:
         app: jenkins
     spec:
+      securityContext:
+        runAsUser: 0
       containers:
       - image: jenkins:latest
         name: jenkins-orchestrator
@@ -48,8 +50,8 @@ spec:
           name: webui
         volumeMounts:
         - name: jenkins-persistent-storage
-          mountPath: /var/jenkins_home
+          mountPath: /var/jenkins_home/
       volumes:
       - name: jenkins-persistent-storage
         persistentVolumeClaim:
-          claimName: jenkins-root-claim
+          claimName: jenkins-home-claim
