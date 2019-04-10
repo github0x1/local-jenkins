@@ -41,7 +41,7 @@ spec:
       securityContext:
         runAsUser: 0
       containers:
-      - image: jenkins:latest
+      - image: jenkins/jenkins:2.150.1
         name: jenkins-orchestrator
         ports:
         - containerPort: 50000
